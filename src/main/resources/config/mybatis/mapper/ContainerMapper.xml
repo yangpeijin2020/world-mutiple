@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ContainerMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.stacker.Container">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="container_no" jdbcType="VARCHAR" property="containerNo" />
+    <result column="tray_no" jdbcType="VARCHAR" property="trayNo" />
+    <result column="container_type_no" jdbcType="VARCHAR" property="containerTypeNo" />
+    <result column="container_biz_type_no" jdbcType="VARCHAR" property="containerBizTypeNo" />
+    <result column="storage_location_no" jdbcType="VARCHAR" property="storageLocationNo" />
+    <result column="map_area_id" jdbcType="BIGINT" property="mapAreaId" />
+    <result column="pick_type" jdbcType="INTEGER" property="pickType" />
+    <result column="point" jdbcType="VARCHAR" property="point" />
+    <result column="orientation_no" jdbcType="VARCHAR" property="orientationNo" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="band" jdbcType="VARCHAR" property="band" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="org_no" jdbcType="VARCHAR" property="orgNo" />
+    <result column="distribute_no" jdbcType="VARCHAR" property="distributeNo" />
+    <result column="warehouse_no" jdbcType="VARCHAR" property="warehouseNo" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="ts" jdbcType="TIMESTAMP" property="ts" />
+    <result column="zone_no" jdbcType="VARCHAR" property="zoneNo" />
+    <result column="stop_in_flag" jdbcType="TINYINT" property="stopInFlag" />
+    <result column="zone_name" jdbcType="VARCHAR" property="zoneName" />
+    <result column="sub_area_no" jdbcType="VARCHAR" property="subAreaNo" />
+  </resultMap>
+  <select id="getContainerByContainerNo"     resultMap="BaseResultMap"   parameterType="java.lang.String">
+         select *  from   `xwms`.`container`  where  container_no=#{containerNo}
+  </select>
+
+</mapper>

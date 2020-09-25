@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Bootstrap 实例 - 按钮组的大小</title>
+	<link  href="asserts/css/bootstrap.min.3.3.7.css" rel="stylesheet">
+	<script src="asserts/js/jquery-3.2.1.slim.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#ICR").click(function () {
+				alert("=========="+$("#containerNo").val());
+				$("#containerNo").val();
+			});
+
+		});
+	</script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">
+				<img alt="Brand" src="...">
+			</a>
+		</div>
+	</div>
+</nav>
+<div class="row">
+	<div class="col-md-3">
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation" class="active"><a href="#">立库</a></li>
+			<li role="presentation"><a href="#">输送线</a></li>
+			<li role="presentation"><a href="#">提升机</a></li>
+		</ul>
+	</div>
+	<div class="col-md-4">
+		<form class="form-inline">
+			<div class="form-group">
+				<label >containerNo:</label>
+				<input type="text" class="form-control" id="containerNo" placeholder="">
+			</div>
+		</form>
+		<h3>入库</h3>
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button" id="ICR"  class="btn btn-info">ICR</button>
+			<button type="button" id="ICTC" class="btn btn-info">CTC</button>
+			<button type="button" id="ICPR"  class="btn btn-default">CPR</button>
+			<button type="button" id="ITSE"  class="btn btn-info">TSE</button>
+			<button type="button"  id="ICTA"   class="btn btn-info">CTA</button>
+			<button type="button"  id="ICPD" class="btn btn-info">CPD</button>
+			<button type="button"  id="IPIS"   class="btn btn-info">PIS</button>
+		</div>
+		<h3>出库</h3>
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button"   id="COR"    class="btn btn-default">COR</button>
+			<button type="button"   id="TSE"  class="btn btn-info">TSE</button>
+			<button type="button"   id="CTA"  class="btn btn-info">CTA</button>
+			<button type="button"   id="CPD"  class="btn btn-info">CPD</button>
+			<button type="button"   id="COC"  class="btn btn-info">COC</button>
+			<button type="button"   id="RTA"  class="btn btn-info">RTA</button>
+			<button type="button"   id="RPD"  class="btn btn-info">RPD</button>
+			<button type="button"   id="COF"   class="btn btn-info">COF</button>
+			<button type="button"   id="CPU"  class="btn btn-info">CPU</button>
+		</div>
+	</div>
+	<div class="col-md-4">
+	  		  <textarea class="form-control"   rows="25" >
+
+			  </textarea>
+	</div>
+</div>
+</body>
+</html>

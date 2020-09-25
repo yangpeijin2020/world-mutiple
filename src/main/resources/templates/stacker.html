@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Bootstrap 实例 - 按钮组的大小</title>
+
+	<link  href="asserts/css/bootstrap.min.3.3.7.css" rel="stylesheet">
+	<!--	<script src="asserts/js/jquery-3.2.1.slim.min.js"></script>-->
+	<script src="asserts/js/jquery-3.3.1.js"></script>
+	<script>
+
+		function  orderSubmit  (instruction,containerNo,point){
+			alert("====="+instruction);
+			$.ajax({
+				type: "POST",
+				url: "/order/"+instruction,
+				contentType: "application/json",
+				// contentType: "application/x-www-form-urlencoded",
+				data:JSON.stringify({"containerNo":containerNo,"point":point,"instruction":instruction}),
+				// data:{"containerNo":containerNo,"point":point},
+				dataType: "text",
+				success:function (msg) {
+					alert("提交成功"+msg);
+					if(msg!=null&&msg!=""){
+						var str=$("#content").val()+msg +"\n";
+						$("#content").val(str);
+					}
+
+				},
+				error:function (message) {
+					// alert("提交失败"+JSON.stringify(message));
+				}
+			});
+
+		}
+
+
+
+		$(document).ready(function(){
+			/*
+			$("#ICR").click(function () {
+				alert("=========="+$("#containerNo").val()+$("#point").val());
+				orderSubmit("ICR",$("#containerNo").val(),$("#point").val(),$("#uuidLen").val())
+			});
+			$("#IRTA").click(function () {
+				alert("=========="+$("#containerNo").val()+$("#point").val());
+				orderSubmit("IRTA",$("#containerNo").val(),$("#point").val())
+			});
+			*/
+			$(":button").click(function () {
+				alert("=========="+$("#containerNo").val()+$("#point").val());
+				orderSubmit($(this).html(),$("#containerNo").val(),$("#point").val())
+			});
+
+		});
+	</script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">
+				<img alt="Brand" src="...">
+			</a>
+		</div>
+	</div>
+</nav>
+<div class="row">
+	<div class="col-md-3">
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation" class="active"><a th:href="@{/order/inbound}">立库</a></li>
+			<li role="presentation"><a href="#">输送线</a></li>
+			<li role="presentation"><a href="#">提升机</a></li>
+		</ul>
+	</div>
+	<div class="col-md-3">
+		<form class="form-inline">
+			<div class="form-group">
+				<label >containerNo:</label>
+				<input type="text" class="form-control" id="containerNo" placeholder="">
+			</div>
+			<div class="form-group">
+				<label >外形检测口:</label>
+				<input type="text" class="form-control" id="point" placeholder="">
+			</div>
+			<div class="form-group">
+				<label >uuid长度:</label>
+				<input type="text" class="form-control" id="uuidLen" placeholder="20"   value="20" >
+			</div>
+		</form>
+		<button type="button" id="REG"  class="btn btn-info">REG</button>
+		<h3>入库</h3>
+		<div   class="btn-group" role="group" aria-label="...">
+<!--			<button  th:each="inboundList:${inboundList}" type="button"   class="btn btn-info"   >[[${inboundList}]]</button>-->
+
+					<button type="button" id="ICR"  class="btn btn-info">ICR</button>
+                    <button type="button" id="IRTA" class="btn btn-info">RTA</button>
+                    <button type="button" id="IRTD" class="btn btn-info">RTD</button>
+                    <button type="button" id="IRPD" class="btn btn-info">RPD</button>
+                    <button type="button" id="ICTC" class="btn btn-info">CTC</button>
+                    <button type="button" id="ITSE"  class="btn btn-info">TSE</button>
+                    <button type="button"  id="ICTA"   class="btn btn-info">CTA</button>
+                    <button type="button"  id="ICPD" class="btn btn-info">CPD</button>
+                    <button type="button"  id="IPIS"   class="btn btn-info">PIS</button>
+		</div>
+		<h3>出库</h3>
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button"   id="COR"    class="btn btn-default">COR</button>
+			<button type="button"   id="TSE"  class="btn btn-info">TSE</button>
+			<button type="button"   id="CTA"  class="btn btn-info">CTA</button>
+			<button type="button"   id="CPD"  class="btn btn-info">CPD</button>
+			<button type="button"   id="COC"  class="btn btn-info">COC</button>
+			<button type="button"   id="RTA"  class="btn btn-info">RTA</button>
+			<button type="button"   id="RPD"  class="btn btn-info">RPD</button>
+			<button type="button"   id="COF"   class="btn btn-info">COF</button>
+			<button type="button"   id="CPU"  class="btn btn-info">CPU</button>
+		</div>
+
+		<h3>容器状态</h3>
+		<div class="table-responsive">
+			<table class="table table-striped table-sm">
+				<thead>
+				<tr>
+					<th>#</th>
+					<th>containerNo</th>
+					<th>status</th>
+					<th>birth</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr  th:each="emp:${emps}">
+					<td  th:text="${emp.id}"></td>
+					<td  th:text="${emp.gender}==0?'male':'female'"></td>
+					<td  th:text="${emp.department.departmentName}"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+
+
+		</div>
+	</div>
+	<div class="col-md-6">
+		<textarea  id="content" class="form-control"   rows="25" ></textarea>
+	</div>
+</div>
+
+
+
+</body>
+</html>
